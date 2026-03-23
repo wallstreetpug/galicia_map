@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0a812350370ca84024188c924063c4ec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_0a812350370ca84024188c924063c4ec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0a812350370ca84024188c924063c4ec = L.map(
+                "map_0a812350370ca84024188c924063c4ec",
+                {
+                    center: [42.7, -8.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e7b71b81956b032036851025ea4730f5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e7b71b81956b032036851025ea4730f5.addTo(map_0a812350370ca84024188c924063c4ec);
+        
+    
+            var marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_927dedad2880fc837e3c4a13db692a3c = L.marker(
+                [42.2119, -8.7351],
+                {
+}
+            ).addTo(marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df);
+        
+    
+            var icon_460b2c083678f03e4888b329c2f2e137 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09114c0fae5ee98b378c348274b36761 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1c8a0254d5d94ac5a78b2d1c89084c21 = $(`<div id="html_1c8a0254d5d94ac5a78b2d1c89084c21" style="width: 100.0%; height: 100.0%;"><h4>Hospital Álvaro Cunqueiro</h4></div>`)[0];
+                popup_09114c0fae5ee98b378c348274b36761.setContent(html_1c8a0254d5d94ac5a78b2d1c89084c21);
+            
+        
+
+        marker_927dedad2880fc837e3c4a13db692a3c.bindPopup(popup_09114c0fae5ee98b378c348274b36761)
+        ;
+
+        
+    
+    
+            marker_927dedad2880fc837e3c4a13db692a3c.bindTooltip(
+                `<div>
+                     Hospital Álvaro Cunqueiro
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_927dedad2880fc837e3c4a13db692a3c.setIcon(icon_460b2c083678f03e4888b329c2f2e137);
+            
+    
+            marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df.addTo(map_0a812350370ca84024188c924063c4ec);
+        
+</script>
+</html>
