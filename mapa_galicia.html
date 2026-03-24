@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_0a812350370ca84024188c924063c4ec {
+                #map_81865823e4d3f80608c82db5f7f4a832 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -57,14 +57,35 @@
 <body>
     
     
-            <div class="folium-map" id="map_0a812350370ca84024188c924063c4ec" ></div>
+    <div style="
+        position: fixed; 
+        top: 50px; left: 50px; width: 250px; height: auto;
+        background-color: white;
+        border:2px solid grey;
+        z-index:9999;
+        font-size:14px;
+        padding: 10px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    ">
+    <h4>Mapa de uso</h4>
+    <p>Este mapa muestra las organizaciones colaboradoras.</p>
+    <ul>
+        <li><span style="color:red;">●</span> Hospitales</li>
+        <li><span style="color:blue;">●</span> Centros educativos</li>
+        <li><span style="color:green;">●</span> Empresas</li>
+    </ul>
+    <p>Haz clic en los puntos para más información.</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_81865823e4d3f80608c82db5f7f4a832" ></div>
         
 </body>
 <script>
     
     
-            var map_0a812350370ca84024188c924063c4ec = L.map(
-                "map_0a812350370ca84024188c924063c4ec",
+            var map_81865823e4d3f80608c82db5f7f4a832 = L.map(
+                "map_81865823e4d3f80608c82db5f7f4a832",
                 {
                     center: [42.7, -8.5],
                     crs: L.CRS.EPSG3857,
@@ -81,15 +102,15 @@
 
         
     
-            var tile_layer_e7b71b81956b032036851025ea4730f5 = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            var tile_layer_81db5ba9d8fb420dc569ff6601c340fa = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
-  "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
+  "minZoom": 7,
+  "maxZoom": 14,
+  "maxNativeZoom": 14,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
-  "subdomains": "abc",
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -98,23 +119,29 @@
             );
         
     
-            tile_layer_e7b71b81956b032036851025ea4730f5.addTo(map_0a812350370ca84024188c924063c4ec);
+            tile_layer_81db5ba9d8fb420dc569ff6601c340fa.addTo(map_81865823e4d3f80608c82db5f7f4a832);
         
     
-            var marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df = L.markerClusterGroup(
+            map_81865823e4d3f80608c82db5f7f4a832.fitBounds(
+                [[41.8, -9.5], [43.8, -6.5]],
+                {}
+            );
+        
+    
+            var marker_cluster_69f7249d835a007e809119d9b73ac15c = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_927dedad2880fc837e3c4a13db692a3c = L.marker(
+            var marker_b77bdb9cd9b5b3c62ca80dc02218b6ee = L.marker(
                 [42.2119, -8.7351],
                 {
 }
-            ).addTo(marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df);
+            ).addTo(marker_cluster_69f7249d835a007e809119d9b73ac15c);
         
     
-            var icon_460b2c083678f03e4888b329c2f2e137 = L.AwesomeMarkers.icon(
+            var icon_a2b15100a18f5badd399cb709a735b95 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "red",
   "iconColor": "white",
@@ -125,24 +152,24 @@
             );
         
     
-        var popup_09114c0fae5ee98b378c348274b36761 = L.popup({
+        var popup_835d6df829827bb602568ac021fb98dd = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_1c8a0254d5d94ac5a78b2d1c89084c21 = $(`<div id="html_1c8a0254d5d94ac5a78b2d1c89084c21" style="width: 100.0%; height: 100.0%;"><h4>Hospital Álvaro Cunqueiro</h4></div>`)[0];
-                popup_09114c0fae5ee98b378c348274b36761.setContent(html_1c8a0254d5d94ac5a78b2d1c89084c21);
+                var html_774d7f53b253c1d54c9fc75e76c1e369 = $(`<div id="html_774d7f53b253c1d54c9fc75e76c1e369" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <h4 style="margin-bottom:5px;">Hospital Álvaro Cunqueiro</h4>         </div></div>`)[0];
+                popup_835d6df829827bb602568ac021fb98dd.setContent(html_774d7f53b253c1d54c9fc75e76c1e369);
             
         
 
-        marker_927dedad2880fc837e3c4a13db692a3c.bindPopup(popup_09114c0fae5ee98b378c348274b36761)
+        marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.bindPopup(popup_835d6df829827bb602568ac021fb98dd)
         ;
 
         
     
     
-            marker_927dedad2880fc837e3c4a13db692a3c.bindTooltip(
+            marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.bindTooltip(
                 `<div>
                      Hospital Álvaro Cunqueiro
                  </div>`,
@@ -152,10 +179,10 @@
             );
         
     
-                marker_927dedad2880fc837e3c4a13db692a3c.setIcon(icon_460b2c083678f03e4888b329c2f2e137);
+                marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.setIcon(icon_a2b15100a18f5badd399cb709a735b95);
             
     
-            marker_cluster_23e3e77e6b92f4671ed5c4650d9f28df.addTo(map_0a812350370ca84024188c924063c4ec);
+            marker_cluster_69f7249d835a007e809119d9b73ac15c.addTo(map_81865823e4d3f80608c82db5f7f4a832);
         
 </script>
 </html>
