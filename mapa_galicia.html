@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_81865823e4d3f80608c82db5f7f4a832 {
+                #map_851e80204441b9115a3b81a31e3e51bb {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -67,47 +67,73 @@
         padding: 10px;
         box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
     ">
-    <h4>Mapa de uso</h4>
-    <p>Este mapa muestra las organizaciones colaboradoras.</p>
+    <h4>Mapa de Organizaciones Colaboradoras</h4>
+    <p>Este mapa muestra las organizaciones que colaboran con nuestro proyecto de investigación en Galicia.</p>
     <ul>
         <li><span style="color:red;">●</span> Hospitales</li>
         <li><span style="color:blue;">●</span> Centros educativos</li>
         <li><span style="color:green;">●</span> Empresas</li>
+        <li><span style="color:gray;">●</span> Otros</li>
     </ul>
+    <p><strong>Controles de zoom:</strong></p>
+    <p>• Vista inicial: Galicia completa (zoom máximo alejado)</p>
+    <p>• Límite de acercamiento: Nivel ciudad/provincial</p>
     <p>Haz clic en los puntos para más información.</p>
     </div>
     
     
-            <div class="folium-map" id="map_81865823e4d3f80608c82db5f7f4a832" ></div>
+            <div class="folium-map" id="map_851e80204441b9115a3b81a31e3e51bb" ></div>
         
 </body>
 <script>
     
     
-            var map_81865823e4d3f80608c82db5f7f4a832 = L.map(
-                "map_81865823e4d3f80608c82db5f7f4a832",
+            var map_851e80204441b9115a3b81a31e3e51bb = L.map(
+                "map_851e80204441b9115a3b81a31e3e51bb",
                 {
                     center: [42.7, -8.5],
                     crs: L.CRS.EPSG3857,
                     ...{
-  "zoom": 8,
+  "zoom": 7,
   "zoomControl": true,
   "preferCanvas": false,
+  "bounds": [
+[
+41.8,
+-9.5,
+],
+[
+43.8,
+-6.5,
+],
+],
+  "maxBounds": [
+[
+41.8,
+-9.5,
+],
+[
+43.8,
+-6.5,
+],
+],
+  "maxBoundsViscosity": 1.0,
 }
 
                 }
             );
+            L.control.scale().addTo(map_851e80204441b9115a3b81a31e3e51bb);
 
             
 
         
     
-            var tile_layer_81db5ba9d8fb420dc569ff6601c340fa = L.tileLayer(
+            var tile_layer_09fdff78ec1557fbfd140265197e11fd = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 7,
-  "maxZoom": 14,
-  "maxNativeZoom": 14,
+  "maxZoom": 11,
+  "maxNativeZoom": 11,
   "noWrap": false,
   "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
   "subdomains": "abcd",
@@ -119,29 +145,29 @@
             );
         
     
-            tile_layer_81db5ba9d8fb420dc569ff6601c340fa.addTo(map_81865823e4d3f80608c82db5f7f4a832);
+            tile_layer_09fdff78ec1557fbfd140265197e11fd.addTo(map_851e80204441b9115a3b81a31e3e51bb);
         
     
-            map_81865823e4d3f80608c82db5f7f4a832.fitBounds(
+            map_851e80204441b9115a3b81a31e3e51bb.fitBounds(
                 [[41.8, -9.5], [43.8, -6.5]],
                 {}
             );
         
     
-            var marker_cluster_69f7249d835a007e809119d9b73ac15c = L.markerClusterGroup(
+            var marker_cluster_69119626a580826989ab438881764a8c = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_b77bdb9cd9b5b3c62ca80dc02218b6ee = L.marker(
+            var marker_be40fa22c59b3b3d7d0040578085409b = L.marker(
                 [42.2119, -8.7351],
                 {
 }
-            ).addTo(marker_cluster_69f7249d835a007e809119d9b73ac15c);
+            ).addTo(marker_cluster_69119626a580826989ab438881764a8c);
         
     
-            var icon_a2b15100a18f5badd399cb709a735b95 = L.AwesomeMarkers.icon(
+            var icon_001daa27f8fd837bf59bc38a9de42671 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "red",
   "iconColor": "white",
@@ -152,24 +178,24 @@
             );
         
     
-        var popup_835d6df829827bb602568ac021fb98dd = L.popup({
+        var popup_d294fe24c9e21309f204b46c12964517 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_774d7f53b253c1d54c9fc75e76c1e369 = $(`<div id="html_774d7f53b253c1d54c9fc75e76c1e369" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <h4 style="margin-bottom:5px;">Hospital Álvaro Cunqueiro</h4>         </div></div>`)[0];
-                popup_835d6df829827bb602568ac021fb98dd.setContent(html_774d7f53b253c1d54c9fc75e76c1e369);
+                var html_55cd3dbf17487148b3c1f38e1ca99493 = $(`<div id="html_55cd3dbf17487148b3c1f38e1ca99493" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <h4 style="margin-bottom:5px;">Hospital Álvaro Cunqueiro</h4>         </div></div>`)[0];
+                popup_d294fe24c9e21309f204b46c12964517.setContent(html_55cd3dbf17487148b3c1f38e1ca99493);
             
         
 
-        marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.bindPopup(popup_835d6df829827bb602568ac021fb98dd)
+        marker_be40fa22c59b3b3d7d0040578085409b.bindPopup(popup_d294fe24c9e21309f204b46c12964517)
         ;
 
         
     
     
-            marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.bindTooltip(
+            marker_be40fa22c59b3b3d7d0040578085409b.bindTooltip(
                 `<div>
                      Hospital Álvaro Cunqueiro
                  </div>`,
@@ -179,10 +205,10 @@
             );
         
     
-                marker_b77bdb9cd9b5b3c62ca80dc02218b6ee.setIcon(icon_a2b15100a18f5badd399cb709a735b95);
+                marker_be40fa22c59b3b3d7d0040578085409b.setIcon(icon_001daa27f8fd837bf59bc38a9de42671);
             
     
-            marker_cluster_69f7249d835a007e809119d9b73ac15c.addTo(map_81865823e4d3f80608c82db5f7f4a832);
+            marker_cluster_69119626a580826989ab438881764a8c.addTo(map_851e80204441b9115a3b81a31e3e51bb);
         
 </script>
 </html>
