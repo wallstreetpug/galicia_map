@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f7bdaf00af02e44ad6d65b920b0d3b45 {
+                #map_72a38c492baab507e0afb090f65069df {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -57,51 +57,70 @@
 <body>
     
     
-<div style="
-    position: fixed; 
-    top: 50px; left: 50px; width: 260px;
-    background-color: white;
-    border:2px solid #ccc;
-    z-index:9999;
-    font-size:14px;
-    padding: 12px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-">
-<h4 style="margin-bottom:8px;">Red de Colaboración</h4>
-<p>Organizaciones participantes en el programa:</p>
-<ul style="padding-left:15px;">
-    <li><span style="color:blue;">●</span> Administración pública</li>
-    <li><span style="color:red;">●</span> Servicios de salud / intervención</li>
-    <li><span style="color:green;">●</span> Asociaciones y fundaciones</li>
-</ul>
-<p style="font-size:12px;">Haz clic en cada punto para ver detalles.</p>
-</div>
+    <div id="infoPanel">
+      <div id="infoHeader" onclick="toggleInfo()">
+          Construyendo Salud – Red de Colaboración
+          <span id="infoArrow">▼</span>
+      </div>
+      <div id="infoContent">
+          <p><b>Programa Construyendo Salud (UNDERISK)</b></p>
+          <p style="font-size:13px;">
+          Visualización de la red de colaboración institucional y comunitaria 
+          en Galicia.
+          </p>
+          <hr>
+          <p><span style="color:blue;">●</span> Administración pública</p>
+          <p><span style="color:red;">●</span> Servicios sanitarios</p>
+          <p><span style="color:green;">●</span> Asociaciones</p>
+      </div>
+    </div>
+
+    <style>
+    #infoPanel{
+        position:fixed;top:15px;left:15px;width:300px;background:white;
+        border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,0.25);
+        z-index:9999;font-family:Arial;
+    }
+    #infoHeader{
+        background:linear-gradient(135deg,#2c3e50,#3498db);
+        color:white;padding:12px 16px;cursor:pointer;font-weight:bold;
+        display:flex;justify-content:space-between;
+    }
+    #infoContent{padding:14px;}
+    .collapsed #infoContent{display:none;}
+    </style>
+
+    <script>
+    let collapsed = window.innerWidth < 768;
+    function toggleInfo(){
+      const panel=document.getElementById("infoPanel");
+      const arrow=document.getElementById("infoArrow");
+      collapsed=!collapsed;
+      panel.classList.toggle("collapsed");
+      arrow.textContent = collapsed ? "▲" : "▼";
+    }
+    if(collapsed){
+      document.getElementById("infoPanel").classList.add("collapsed");
+      document.getElementById("infoArrow").textContent="▲";
+    }
+    </script>
     
-            <div class="folium-map" id="map_f7bdaf00af02e44ad6d65b920b0d3b45" ></div>
+    
+            <div class="folium-map" id="map_72a38c492baab507e0afb090f65069df" ></div>
         
 </body>
 <script>
     
     
-            var map_f7bdaf00af02e44ad6d65b920b0d3b45 = L.map(
-                "map_f7bdaf00af02e44ad6d65b920b0d3b45",
+            var map_72a38c492baab507e0afb090f65069df = L.map(
+                "map_72a38c492baab507e0afb090f65069df",
                 {
                     center: [42.7, -8.5],
                     crs: L.CRS.EPSG3857,
                     ...{
   "zoom": 7,
   "zoomControl": true,
-  "preferCanvas": false,
-  "bounds": [
-[
-41.8,
--9.5,
-],
-[
-43.8,
--6.5,
-],
-],
+  "preferCanvas": true,
   "maxBounds": [
 [
 41.8,
@@ -117,18 +136,18 @@
 
                 }
             );
-            L.control.scale().addTo(map_f7bdaf00af02e44ad6d65b920b0d3b45);
+            L.control.scale().addTo(map_72a38c492baab507e0afb090f65069df);
 
             
 
         
     
-            var tile_layer_007a797b64db8ff83b278d31c3c2f7cd = L.tileLayer(
+            var tile_layer_67601e1691bbef36349381ca617396d1 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
-  "minZoom": 7,
-  "maxZoom": 11,
-  "maxNativeZoom": 11,
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
   "noWrap": false,
   "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
   "subdomains": "abcd",
@@ -140,317 +159,29 @@
             );
         
     
-            tile_layer_007a797b64db8ff83b278d31c3c2f7cd.addTo(map_f7bdaf00af02e44ad6d65b920b0d3b45);
+            tile_layer_67601e1691bbef36349381ca617396d1.addTo(map_72a38c492baab507e0afb090f65069df);
         
     
-            map_f7bdaf00af02e44ad6d65b920b0d3b45.fitBounds(
+            map_72a38c492baab507e0afb090f65069df.fitBounds(
                 [[41.8, -9.5], [43.8, -6.5]],
                 {}
             );
         
     
-            var marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80 = L.markerClusterGroup(
+            var marker_cluster_ce50edd4df96fc74805a6032fee887e4 = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_cf629d1702ac6036eb437dc0c003a6a1 = L.marker(
-                [42.596, -8.764],
+            var marker_132a4ae4e358f5bfd89de3afe6f1ab12 = L.marker(
+                [42.43177, -8.64887],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_9e019da21f59f78aa12c901cbcf703a7 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_5d8ca2ac13fef4fa841d82885d8e6119 = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_054c17b215844611f54381f5480d60a0 = $(`<div id="html_054c17b215844611f54381f5480d60a0" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Vilagarcía de Arousa</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_5d8ca2ac13fef4fa841d82885d8e6119.setContent(html_054c17b215844611f54381f5480d60a0);
-            
-        
-
-        marker_cf629d1702ac6036eb437dc0c003a6a1.bindPopup(popup_5d8ca2ac13fef4fa841d82885d8e6119)
-        ;
-
-        
-    
-    
-            marker_cf629d1702ac6036eb437dc0c003a6a1.bindTooltip(
-                `<div>
-                     Concello de Vilagarcía de Arousa
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_cf629d1702ac6036eb437dc0c003a6a1.setIcon(icon_9e019da21f59f78aa12c901cbcf703a7);
-            
-    
-            var marker_26d0adab3b067a3a489d7c4c55e4b8ac = L.marker(
-                [42.717, -8.72],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_566c701bedb37c2a48f312d6c05f8be9 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_177d7cfb6d642d8dd0150fa7ba7ccaef = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_0459caa6d2dd081d6313c64be213460c = $(`<div id="html_0459caa6d2dd081d6313c64be213460c" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Dodro</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_177d7cfb6d642d8dd0150fa7ba7ccaef.setContent(html_0459caa6d2dd081d6313c64be213460c);
-            
-        
-
-        marker_26d0adab3b067a3a489d7c4c55e4b8ac.bindPopup(popup_177d7cfb6d642d8dd0150fa7ba7ccaef)
-        ;
-
-        
-    
-    
-            marker_26d0adab3b067a3a489d7c4c55e4b8ac.bindTooltip(
-                `<div>
-                     Concello de Dodro
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_26d0adab3b067a3a489d7c4c55e4b8ac.setIcon(icon_566c701bedb37c2a48f312d6c05f8be9);
-            
-    
-            var marker_cb413e77024a03a89d2b6e304e9d6483 = L.marker(
-                [42.689, -8.488],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_2074a6cb3ff34b3cb89bbd9885eef3c4 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_bacbac6511347c805bc722d25076889b = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_080093a599418d7fe22d9fa8c30fecaf = $(`<div id="html_080093a599418d7fe22d9fa8c30fecaf" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de A Estrada</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_bacbac6511347c805bc722d25076889b.setContent(html_080093a599418d7fe22d9fa8c30fecaf);
-            
-        
-
-        marker_cb413e77024a03a89d2b6e304e9d6483.bindPopup(popup_bacbac6511347c805bc722d25076889b)
-        ;
-
-        
-    
-    
-            marker_cb413e77024a03a89d2b6e304e9d6483.bindTooltip(
-                `<div>
-                     Concello de A Estrada
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_cb413e77024a03a89d2b6e304e9d6483.setIcon(icon_2074a6cb3ff34b3cb89bbd9885eef3c4);
-            
-    
-            var marker_d225f22c9d5c9847aa8e5effb2c1f8a2 = L.marker(
-                [42.82, -8.417],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_a8cc1e27b4919049d34c8a3ccfe8d6a8 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_5725dfb81b6bb51a1f92f48889b9cf33 = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_50c6bab6a0ab527d2f1e9227c8a5b3bb = $(`<div id="html_50c6bab6a0ab527d2f1e9227c8a5b3bb" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Boqueixón</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_5725dfb81b6bb51a1f92f48889b9cf33.setContent(html_50c6bab6a0ab527d2f1e9227c8a5b3bb);
-            
-        
-
-        marker_d225f22c9d5c9847aa8e5effb2c1f8a2.bindPopup(popup_5725dfb81b6bb51a1f92f48889b9cf33)
-        ;
-
-        
-    
-    
-            marker_d225f22c9d5c9847aa8e5effb2c1f8a2.bindTooltip(
-                `<div>
-                     Concello de Boqueixón
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_d225f22c9d5c9847aa8e5effb2c1f8a2.setIcon(icon_a8cc1e27b4919049d34c8a3ccfe8d6a8);
-            
-    
-            var marker_2ee49a7dc8cf1acae81a96026e4a1602 = L.marker(
-                [42.12, -8.85],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_5f88b04da912c444f1f8a63310731beb = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_434923b8ad940454e487e595695de9c2 = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_f1eb1c25268bd2fbf9d010bf99c37252 = $(`<div id="html_f1eb1c25268bd2fbf9d010bf99c37252" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Mancomunidade do Val Miñor (Baiona)</h4> <p style='font-size:13px; line-height:1.4;'>Entidad supramunicipal colaboradora</p></div></div>`)[0];
-                popup_434923b8ad940454e487e595695de9c2.setContent(html_f1eb1c25268bd2fbf9d010bf99c37252);
-            
-        
-
-        marker_2ee49a7dc8cf1acae81a96026e4a1602.bindPopup(popup_434923b8ad940454e487e595695de9c2)
-        ;
-
-        
-    
-    
-            marker_2ee49a7dc8cf1acae81a96026e4a1602.bindTooltip(
-                `<div>
-                     Mancomunidade do Val Miñor (Baiona)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_2ee49a7dc8cf1acae81a96026e4a1602.setIcon(icon_5f88b04da912c444f1f8a63310731beb);
-            
-    
-            var marker_2d298126601ed537eec2e1e068b98b2a = L.marker(
-                [42.777, -7.414],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_4ffc1fd03f85751f23e9a0473738b963 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_1ba9ccc61a0185dc5599ba41cc724edc = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_ea5401b3116780c4d14404e65f230dcf = $(`<div id="html_ea5401b3116780c4d14404e65f230dcf" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Sarria</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_1ba9ccc61a0185dc5599ba41cc724edc.setContent(html_ea5401b3116780c4d14404e65f230dcf);
-            
-        
-
-        marker_2d298126601ed537eec2e1e068b98b2a.bindPopup(popup_1ba9ccc61a0185dc5599ba41cc724edc)
-        ;
-
-        
-    
-    
-            marker_2d298126601ed537eec2e1e068b98b2a.bindTooltip(
-                `<div>
-                     Concello de Sarria
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_2d298126601ed537eec2e1e068b98b2a.setIcon(icon_4ffc1fd03f85751f23e9a0473738b963);
-            
-    
-            var marker_02717e00fd26f784d665b1e66ef1a1d2 = L.marker(
-                [42.2406, -8.7207],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_97cd069e644b42ba2b70a30103700a7c = L.AwesomeMarkers.icon(
+            var icon_736dc6283cbdd209300075d10c920c1f = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -461,26 +192,26 @@
             );
         
     
-        var popup_ec721bc2d90daff758f54c0f69c39529 = L.popup({
-  "maxWidth": 250,
+        var popup_0a1aa8f0f6ee4824278ae233bc060342 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_0efce6d24321f44f904067f578b2f028 = $(`<div id="html_0efce6d24321f44f904067f578b2f028" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Asociación Érguete Vigo</h4> <p style='font-size:13px; line-height:1.4;'>Entidad social especializada en adicciones</p></div></div>`)[0];
-                popup_ec721bc2d90daff758f54c0f69c39529.setContent(html_0efce6d24321f44f904067f578b2f028);
+                var html_8b909d81dbce4702a913ea7050a71da5 = $(`<div id="html_8b909d81dbce4702a913ea7050a71da5" style="width: 100.0%; height: 100.0%;"><h4>FUNDACIÓN GALEGA CONTRA O NARCOTRÁFICO</h4></div>`)[0];
+                popup_0a1aa8f0f6ee4824278ae233bc060342.setContent(html_8b909d81dbce4702a913ea7050a71da5);
             
         
 
-        marker_02717e00fd26f784d665b1e66ef1a1d2.bindPopup(popup_ec721bc2d90daff758f54c0f69c39529)
+        marker_132a4ae4e358f5bfd89de3afe6f1ab12.bindPopup(popup_0a1aa8f0f6ee4824278ae233bc060342)
         ;
 
         
     
     
-            marker_02717e00fd26f784d665b1e66ef1a1d2.bindTooltip(
+            marker_132a4ae4e358f5bfd89de3afe6f1ab12.bindTooltip(
                 `<div>
-                     Asociación Érguete Vigo
+                     FUNDACIÓN GALEGA CONTRA O NARCOTRÁFICO
                  </div>`,
                 {
   "sticky": true,
@@ -488,17 +219,17 @@
             );
         
     
-                marker_02717e00fd26f784d665b1e66ef1a1d2.setIcon(icon_97cd069e644b42ba2b70a30103700a7c);
+                marker_132a4ae4e358f5bfd89de3afe6f1ab12.setIcon(icon_736dc6283cbdd209300075d10c920c1f);
             
     
-            var marker_bb0044b46ed4bb6bb577a690148e01cf = L.marker(
-                [41.9, -8.87],
+            var marker_22978aceb737eca7523736fdb4295612 = L.marker(
+                [42.89287, -8.53394],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_3abd1ae16f5e47fc2ebe46205be26447 = L.AwesomeMarkers.icon(
+            var icon_db47c1f0e605ffd4825593d0f7e7f913 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -509,26 +240,26 @@
             );
         
     
-        var popup_ca0ace090f3ae5b005671d037b68e1f4 = L.popup({
-  "maxWidth": 250,
+        var popup_6679249a97c5f739d7921b7cb11e3d4a = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_ef1c93932f85cae9820c9a9c54f39411 = $(`<div id="html_ef1c93932f85cae9820c9a9c54f39411" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Asociación Érguete Baixo Miño (A Guarda)</h4> <p style='font-size:13px; line-height:1.4;'>Intervención social en el Baixo Miño</p></div></div>`)[0];
-                popup_ca0ace090f3ae5b005671d037b68e1f4.setContent(html_ef1c93932f85cae9820c9a9c54f39411);
+                var html_3665bb4b14d2378756e9becfb7cca3cf = $(`<div id="html_3665bb4b14d2378756e9becfb7cca3cf" style="width: 100.0%; height: 100.0%;"><h4>Asociación veciñal Polígono de Vite</h4></div>`)[0];
+                popup_6679249a97c5f739d7921b7cb11e3d4a.setContent(html_3665bb4b14d2378756e9becfb7cca3cf);
             
         
 
-        marker_bb0044b46ed4bb6bb577a690148e01cf.bindPopup(popup_ca0ace090f3ae5b005671d037b68e1f4)
+        marker_22978aceb737eca7523736fdb4295612.bindPopup(popup_6679249a97c5f739d7921b7cb11e3d4a)
         ;
 
         
     
     
-            marker_bb0044b46ed4bb6bb577a690148e01cf.bindTooltip(
+            marker_22978aceb737eca7523736fdb4295612.bindTooltip(
                 `<div>
-                     Asociación Érguete Baixo Miño (A Guarda)
+                     Asociación veciñal Polígono de Vite
                  </div>`,
                 {
   "sticky": true,
@@ -536,17 +267,65 @@
             );
         
     
-                marker_bb0044b46ed4bb6bb577a690148e01cf.setIcon(icon_3abd1ae16f5e47fc2ebe46205be26447);
+                marker_22978aceb737eca7523736fdb4295612.setIcon(icon_db47c1f0e605ffd4825593d0f7e7f913);
             
     
-            var marker_186e2df603decabb4c06975395bde3bb = L.marker(
-                [42.2406, -8.7207],
+            var marker_d06bfa24b145f2a017597fc2202321fa = L.marker(
+                [43.40945, -8.17192],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_6441369b1ea5d3babc89b67be5b5bc9e = L.AwesomeMarkers.icon(
+            var icon_4115847e01f1043a356676df90748728 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_74e3991e6c252c497aae363eb09e9f4c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1eace7fe0997d609e4a8f24cbdd75599 = $(`<div id="html_1eace7fe0997d609e4a8f24cbdd75599" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE PONTEDEUME</h4></div>`)[0];
+                popup_74e3991e6c252c497aae363eb09e9f4c.setContent(html_1eace7fe0997d609e4a8f24cbdd75599);
+            
+        
+
+        marker_d06bfa24b145f2a017597fc2202321fa.bindPopup(popup_74e3991e6c252c497aae363eb09e9f4c)
+        ;
+
+        
+    
+    
+            marker_d06bfa24b145f2a017597fc2202321fa.bindTooltip(
+                `<div>
+                     CONCELLO DE PONTEDEUME
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d06bfa24b145f2a017597fc2202321fa.setIcon(icon_4115847e01f1043a356676df90748728);
+            
+    
+            var marker_e711c29572f100af3a6be0a3801ae80a = L.marker(
+                [42.23947, -8.72264],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_d24e9aa521739c88e361363f058b3a79 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -557,26 +336,26 @@
             );
         
     
-        var popup_5d080666d6a3869d5c25f3ec032dc78a = L.popup({
-  "maxWidth": 250,
+        var popup_eed4bd2215749dd518594baf5016e831 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_d013949a36a27f865346e361d3b6e712 = $(`<div id="html_d013949a36a27f865346e361d3b6e712" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Fundación Secretariado Xitano Vigo</h4> <p style='font-size:13px; line-height:1.4;'>Intervención social y comunitaria</p></div></div>`)[0];
-                popup_5d080666d6a3869d5c25f3ec032dc78a.setContent(html_d013949a36a27f865346e361d3b6e712);
+                var html_0fe43a39780aba5d3f00231731911818 = $(`<div id="html_0fe43a39780aba5d3f00231731911818" style="width: 100.0%; height: 100.0%;"><h4>AMAINA Vigo</h4></div>`)[0];
+                popup_eed4bd2215749dd518594baf5016e831.setContent(html_0fe43a39780aba5d3f00231731911818);
             
         
 
-        marker_186e2df603decabb4c06975395bde3bb.bindPopup(popup_5d080666d6a3869d5c25f3ec032dc78a)
+        marker_e711c29572f100af3a6be0a3801ae80a.bindPopup(popup_eed4bd2215749dd518594baf5016e831)
         ;
 
         
     
     
-            marker_186e2df603decabb4c06975395bde3bb.bindTooltip(
+            marker_e711c29572f100af3a6be0a3801ae80a.bindTooltip(
                 `<div>
-                     Fundación Secretariado Xitano Vigo
+                     AMAINA Vigo
                  </div>`,
                 {
   "sticky": true,
@@ -584,113 +363,17 @@
             );
         
     
-                marker_186e2df603decabb4c06975395bde3bb.setIcon(icon_6441369b1ea5d3babc89b67be5b5bc9e);
+                marker_e711c29572f100af3a6be0a3801ae80a.setIcon(icon_d24e9aa521739c88e361363f058b3a79);
             
     
-            var marker_95597e6277d4740502bdc8ec5f32985a = L.marker(
-                [43.47, -8.165],
+            var marker_55545925f064a28c3c6aaf2836442810 = L.marker(
+                [42.25362, -8.69428],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_df05a94a1df3ed5f422fd6a521d86b81 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_3de52810087932c201d22febadfacf63 = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_2ea63c0c91738538e0027d89bfd04675 = $(`<div id="html_2ea63c0c91738538e0027d89bfd04675" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Fene</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_3de52810087932c201d22febadfacf63.setContent(html_2ea63c0c91738538e0027d89bfd04675);
-            
-        
-
-        marker_95597e6277d4740502bdc8ec5f32985a.bindPopup(popup_3de52810087932c201d22febadfacf63)
-        ;
-
-        
-    
-    
-            marker_95597e6277d4740502bdc8ec5f32985a.bindTooltip(
-                `<div>
-                     Concello de Fene
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_95597e6277d4740502bdc8ec5f32985a.setIcon(icon_df05a94a1df3ed5f422fd6a521d86b81);
-            
-    
-            var marker_ef4e679eeffedd78855a40aad45609f0 = L.marker(
-                [42.8782, -8.5448],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_ca53c274a4e00d1044dd6a48f072dd57 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_82463d582b0d71d105042ae317d4adea = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_548798b7f7605f3827f4fd32c4a97d3b = $(`<div id="html_548798b7f7605f3827f4fd32c4a97d3b" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">UMAD Santiago de Compostela</h4> <p style='font-size:13px; line-height:1.4;'>Unidad municipal de atención a drogodependencias</p></div></div>`)[0];
-                popup_82463d582b0d71d105042ae317d4adea.setContent(html_548798b7f7605f3827f4fd32c4a97d3b);
-            
-        
-
-        marker_ef4e679eeffedd78855a40aad45609f0.bindPopup(popup_82463d582b0d71d105042ae317d4adea)
-        ;
-
-        
-    
-    
-            marker_ef4e679eeffedd78855a40aad45609f0.bindTooltip(
-                `<div>
-                     UMAD Santiago de Compostela
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_ef4e679eeffedd78855a40aad45609f0.setIcon(icon_ca53c274a4e00d1044dd6a48f072dd57);
-            
-    
-            var marker_f89de727f72075bda6e090bdbef08a8f = L.marker(
-                [43.012, -7.555],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_83970b6e9691201793a1b749a916b48f = L.AwesomeMarkers.icon(
+            var icon_65dfe1614a17b9c03b9b5aba44ac8c71 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -701,26 +384,26 @@
             );
         
     
-        var popup_f48b45a82ba5f82e1789f7840e2ad9a2 = L.popup({
-  "maxWidth": 250,
+        var popup_4ee543e293988dffe83e0f581af82586 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_0650de6a1ad4c73f0e5fd6b08581da2b = $(`<div id="html_0650de6a1ad4c73f0e5fd6b08581da2b" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Alar Galicia Lugo</h4> <p style='font-size:13px; line-height:1.4;'>Entidad de intervención en adicciones</p></div></div>`)[0];
-                popup_f48b45a82ba5f82e1789f7840e2ad9a2.setContent(html_0650de6a1ad4c73f0e5fd6b08581da2b);
+                var html_edf7bc7b8edf28f8a6c98cdc60f69362 = $(`<div id="html_edf7bc7b8edf28f8a6c98cdc60f69362" style="width: 100.0%; height: 100.0%;"><h4>PLAN COMUNITARIO DE TEIS</h4></div>`)[0];
+                popup_4ee543e293988dffe83e0f581af82586.setContent(html_edf7bc7b8edf28f8a6c98cdc60f69362);
             
         
 
-        marker_f89de727f72075bda6e090bdbef08a8f.bindPopup(popup_f48b45a82ba5f82e1789f7840e2ad9a2)
+        marker_55545925f064a28c3c6aaf2836442810.bindPopup(popup_4ee543e293988dffe83e0f581af82586)
         ;
 
         
     
     
-            marker_f89de727f72075bda6e090bdbef08a8f.bindTooltip(
+            marker_55545925f064a28c3c6aaf2836442810.bindTooltip(
                 `<div>
-                     Alar Galicia Lugo
+                     PLAN COMUNITARIO DE TEIS
                  </div>`,
                 {
   "sticky": true,
@@ -728,17 +411,17 @@
             );
         
     
-                marker_f89de727f72075bda6e090bdbef08a8f.setIcon(icon_83970b6e9691201793a1b749a916b48f);
+                marker_55545925f064a28c3c6aaf2836442810.setIcon(icon_65dfe1614a17b9c03b9b5aba44ac8c71);
             
     
-            var marker_a46730b34e61b58b982b3217241bf5e6 = L.marker(
-                [41.94, -7.44],
+            var marker_9e9770f1ccdfa19bd87b62110378a698 = L.marker(
+                [42.71631, -8.66689],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_81e6e6d08ce8f28c14865f2dd4ee2772 = L.AwesomeMarkers.icon(
+            var icon_61ef1a8d92f1c19588ac1af55fbe9362 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -749,26 +432,26 @@
             );
         
     
-        var popup_1d0de3013f2afd66ac00a9ffcfdc1477 = L.popup({
-  "maxWidth": 250,
+        var popup_4d83f0f5f38733604c3d999e884f4787 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_e52d8823ad8e91319404a26b90740551 = $(`<div id="html_e52d8823ad8e91319404a26b90740551" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Mancomunidade de Verín</h4> <p style='font-size:13px; line-height:1.4;'>Entidad comarcal colaboradora</p></div></div>`)[0];
-                popup_1d0de3013f2afd66ac00a9ffcfdc1477.setContent(html_e52d8823ad8e91319404a26b90740551);
+                var html_ca7fb6523ee2c4f3ffee3d2a40e655ec = $(`<div id="html_ca7fb6523ee2c4f3ffee3d2a40e655ec" style="width: 100.0%; height: 100.0%;"><h4>AGRUPACIÓN DE CONCELLOS DE CATOIRA CALDAS E PONTECESURES</h4></div>`)[0];
+                popup_4d83f0f5f38733604c3d999e884f4787.setContent(html_ca7fb6523ee2c4f3ffee3d2a40e655ec);
             
         
 
-        marker_a46730b34e61b58b982b3217241bf5e6.bindPopup(popup_1d0de3013f2afd66ac00a9ffcfdc1477)
+        marker_9e9770f1ccdfa19bd87b62110378a698.bindPopup(popup_4d83f0f5f38733604c3d999e884f4787)
         ;
 
         
     
     
-            marker_a46730b34e61b58b982b3217241bf5e6.bindTooltip(
+            marker_9e9770f1ccdfa19bd87b62110378a698.bindTooltip(
                 `<div>
-                     Mancomunidade de Verín
+                     AGRUPACIÓN DE CONCELLOS DE CATOIRA CALDAS E PONTECESURES
                  </div>`,
                 {
   "sticky": true,
@@ -776,17 +459,17 @@
             );
         
     
-                marker_a46730b34e61b58b982b3217241bf5e6.setIcon(icon_81e6e6d08ce8f28c14865f2dd4ee2772);
+                marker_9e9770f1ccdfa19bd87b62110378a698.setIcon(icon_61ef1a8d92f1c19588ac1af55fbe9362);
             
     
-            var marker_0539f2ac0ce0f8f075189f4cee872e35 = L.marker(
-                [43.075, -8.409],
+            var marker_3b58a2978ace419fd2f56bba8dd39f69 = L.marker(
+                [43.53698, -7.04044],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_c2e8bfbf82e37bfcc0134d11ceb61510 = L.AwesomeMarkers.icon(
+            var icon_f81ddda5f2a9beaaee49668000dc05d6 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -797,26 +480,26 @@
             );
         
     
-        var popup_e0e1972d3d5b8aa0357ba42fd837fb2f = L.popup({
-  "maxWidth": 250,
+        var popup_1033ca97123eec1206559b1fff25c77b = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_d494129c9fff9d915c572e54c20c371e = $(`<div id="html_d494129c9fff9d915c572e54c20c371e" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Mancomunidade da Comarca de Ordes</h4> <p style='font-size:13px; line-height:1.4;'>Entidad supramunicipal</p></div></div>`)[0];
-                popup_e0e1972d3d5b8aa0357ba42fd837fb2f.setContent(html_d494129c9fff9d915c572e54c20c371e);
+                var html_09281c22f6d50feecac56b13d3266d17 = $(`<div id="html_09281c22f6d50feecac56b13d3266d17" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE RIBADEO</h4></div>`)[0];
+                popup_1033ca97123eec1206559b1fff25c77b.setContent(html_09281c22f6d50feecac56b13d3266d17);
             
         
 
-        marker_0539f2ac0ce0f8f075189f4cee872e35.bindPopup(popup_e0e1972d3d5b8aa0357ba42fd837fb2f)
+        marker_3b58a2978ace419fd2f56bba8dd39f69.bindPopup(popup_1033ca97123eec1206559b1fff25c77b)
         ;
 
         
     
     
-            marker_0539f2ac0ce0f8f075189f4cee872e35.bindTooltip(
+            marker_3b58a2978ace419fd2f56bba8dd39f69.bindTooltip(
                 `<div>
-                     Mancomunidade da Comarca de Ordes
+                     CONCELLO DE RIBADEO
                  </div>`,
                 {
   "sticky": true,
@@ -824,65 +507,17 @@
             );
         
     
-                marker_0539f2ac0ce0f8f075189f4cee872e35.setIcon(icon_c2e8bfbf82e37bfcc0134d11ceb61510);
+                marker_3b58a2978ace419fd2f56bba8dd39f69.setIcon(icon_f81ddda5f2a9beaaee49668000dc05d6);
             
     
-            var marker_9f6884ab611bb973fa5034a2a6fd2900 = L.marker(
-                [42.43, -8.08],
+            var marker_f5faefe225a491e81958670d55b5385f = L.marker(
+                [42.87863, -8.54538],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_86a9a11cedaee0d2a9a95ef4a7a4e0cd = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "info-sign",
-  "prefix": "glyphicon",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_79d9f56415ea174fcdd3237c10feac0e = L.popup({
-  "maxWidth": 250,
-});
-
-        
-            
-                var html_4d98a84c50abbe2eff65674dc61f5fd2 = $(`<div id="html_4d98a84c50abbe2eff65674dc61f5fd2" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Mancomunidade do Carballiño</h4> <p style='font-size:13px; line-height:1.4;'>Entidad comarcal colaboradora</p></div></div>`)[0];
-                popup_79d9f56415ea174fcdd3237c10feac0e.setContent(html_4d98a84c50abbe2eff65674dc61f5fd2);
-            
-        
-
-        marker_9f6884ab611bb973fa5034a2a6fd2900.bindPopup(popup_79d9f56415ea174fcdd3237c10feac0e)
-        ;
-
-        
-    
-    
-            marker_9f6884ab611bb973fa5034a2a6fd2900.bindTooltip(
-                `<div>
-                     Mancomunidade do Carballiño
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_9f6884ab611bb973fa5034a2a6fd2900.setIcon(icon_86a9a11cedaee0d2a9a95ef4a7a4e0cd);
-            
-    
-            var marker_aa3c304dd8abd159a87babaaa64c8753 = L.marker(
-                [43.45, -7.85],
-                {
-}
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
-        
-    
-            var icon_479e55f16db64afc225dafcc2d43e3f0 = L.AwesomeMarkers.icon(
+            var icon_91ef80911f50bcfc94ed758a0634ba49 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -893,26 +528,26 @@
             );
         
     
-        var popup_5156aefa170dd049f7bb959d6e037b1e = L.popup({
-  "maxWidth": 250,
+        var popup_a6505d5f1e342b545b0c639333d195f4 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_c5661912bb3f1f68b13cc074ec11a32b = $(`<div id="html_c5661912bb3f1f68b13cc074ec11a32b" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Asociación Adiante As Pontes</h4> <p style='font-size:13px; line-height:1.4;'>Entidad social colaboradora</p></div></div>`)[0];
-                popup_5156aefa170dd049f7bb959d6e037b1e.setContent(html_c5661912bb3f1f68b13cc074ec11a32b);
+                var html_8a784cae31d7af63e8b2bb59d0866bc6 = $(`<div id="html_8a784cae31d7af63e8b2bb59d0866bc6" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN REXURDIR DE ACTIVIDADES SOCIALES</h4></div>`)[0];
+                popup_a6505d5f1e342b545b0c639333d195f4.setContent(html_8a784cae31d7af63e8b2bb59d0866bc6);
             
         
 
-        marker_aa3c304dd8abd159a87babaaa64c8753.bindPopup(popup_5156aefa170dd049f7bb959d6e037b1e)
+        marker_f5faefe225a491e81958670d55b5385f.bindPopup(popup_a6505d5f1e342b545b0c639333d195f4)
         ;
 
         
     
     
-            marker_aa3c304dd8abd159a87babaaa64c8753.bindTooltip(
+            marker_f5faefe225a491e81958670d55b5385f.bindTooltip(
                 `<div>
-                     Asociación Adiante As Pontes
+                     ASOCIACIÓN REXURDIR DE ACTIVIDADES SOCIALES
                  </div>`,
                 {
   "sticky": true,
@@ -920,17 +555,113 @@
             );
         
     
-                marker_aa3c304dd8abd159a87babaaa64c8753.setIcon(icon_479e55f16db64afc225dafcc2d43e3f0);
+                marker_f5faefe225a491e81958670d55b5385f.setIcon(icon_91ef80911f50bcfc94ed758a0634ba49);
             
     
-            var marker_40f3525ec15b71409a5bd033ab6673d5 = L.marker(
-                [42.335, -7.863],
+            var marker_f43af7eae6e3baf679c21ec5b693fcc8 = L.marker(
+                [42.23403, -8.72289],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_120f401b0448c0a2eeda5763b34252b3 = L.AwesomeMarkers.icon(
+            var icon_1b2f2be8ea965ed01aec04a138a8d8ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1faa68f75289d27ce822176527eb259d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c5a811ccd6dc5c832526a1f59d25856b = $(`<div id="html_c5a811ccd6dc5c832526a1f59d25856b" style="width: 100.0%; height: 100.0%;"><h4>FUNDACIÓN SECRETARIADO XITANO VIGO</h4></div>`)[0];
+                popup_1faa68f75289d27ce822176527eb259d.setContent(html_c5a811ccd6dc5c832526a1f59d25856b);
+            
+        
+
+        marker_f43af7eae6e3baf679c21ec5b693fcc8.bindPopup(popup_1faa68f75289d27ce822176527eb259d)
+        ;
+
+        
+    
+    
+            marker_f43af7eae6e3baf679c21ec5b693fcc8.bindTooltip(
+                `<div>
+                     FUNDACIÓN SECRETARIADO XITANO VIGO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f43af7eae6e3baf679c21ec5b693fcc8.setIcon(icon_1b2f2be8ea965ed01aec04a138a8d8ac);
+            
+    
+            var marker_3cfec3cd1e5cd53e8b0e82c41bbc75ee = L.marker(
+                [41.90179, -8.87386],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_d3da9cbe0db4588b81e82a8862a6aacb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51a82be8a812d322ef220cd605e23161 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a7f0241b9097b56294577e6f320b69c1 = $(`<div id="html_a7f0241b9097b56294577e6f320b69c1" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN ERGUETE A GUARDA</h4></div>`)[0];
+                popup_51a82be8a812d322ef220cd605e23161.setContent(html_a7f0241b9097b56294577e6f320b69c1);
+            
+        
+
+        marker_3cfec3cd1e5cd53e8b0e82c41bbc75ee.bindPopup(popup_51a82be8a812d322ef220cd605e23161)
+        ;
+
+        
+    
+    
+            marker_3cfec3cd1e5cd53e8b0e82c41bbc75ee.bindTooltip(
+                `<div>
+                     ASOCIACIÓN ERGUETE A GUARDA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3cfec3cd1e5cd53e8b0e82c41bbc75ee.setIcon(icon_d3da9cbe0db4588b81e82a8862a6aacb);
+            
+    
+            var marker_52ea42bd218bd47d22073d4488a10ba6 = L.marker(
+                [42.43143, -8.64483],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_e1e4b2dfd70790ad7f68a0d8d5898f26 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -941,26 +672,26 @@
             );
         
     
-        var popup_37c0e0f838ef9107c777e8c46ed3a38d = L.popup({
-  "maxWidth": 250,
+        var popup_5f3e9e34954292fd6c8d32fd0a831d89 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_cb63460fab061ff0c8a40a0d110ed473 = $(`<div id="html_cb63460fab061ff0c8a40a0d110ed473" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Ourense</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_37c0e0f838ef9107c777e8c46ed3a38d.setContent(html_cb63460fab061ff0c8a40a0d110ed473);
+                var html_0569051015630ab3ba8e4521c6d79e9e = $(`<div id="html_0569051015630ab3ba8e4521c6d79e9e" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE PONTEVEDRA</h4></div>`)[0];
+                popup_5f3e9e34954292fd6c8d32fd0a831d89.setContent(html_0569051015630ab3ba8e4521c6d79e9e);
             
         
 
-        marker_40f3525ec15b71409a5bd033ab6673d5.bindPopup(popup_37c0e0f838ef9107c777e8c46ed3a38d)
+        marker_52ea42bd218bd47d22073d4488a10ba6.bindPopup(popup_5f3e9e34954292fd6c8d32fd0a831d89)
         ;
 
         
     
     
-            marker_40f3525ec15b71409a5bd033ab6673d5.bindTooltip(
+            marker_52ea42bd218bd47d22073d4488a10ba6.bindTooltip(
                 `<div>
-                     Concello de Ourense
+                     CONCELLO DE PONTEVEDRA
                  </div>`,
                 {
   "sticky": true,
@@ -968,17 +699,113 @@
             );
         
     
-                marker_40f3525ec15b71409a5bd033ab6673d5.setIcon(icon_120f401b0448c0a2eeda5763b34252b3);
+                marker_52ea42bd218bd47d22073d4488a10ba6.setIcon(icon_e1e4b2dfd70790ad7f68a0d8d5898f26);
             
     
-            var marker_d5a1973e9e09b343a2fe6e70be8df13f = L.marker(
-                [42.2406, -8.7207],
+            var marker_24b76ce6d5d9d9f04b8b1dc2e2535519 = L.marker(
+                [42.55403, -8.99094],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_b4db043f60bc49d8e1418330c0363392 = L.AwesomeMarkers.icon(
+            var icon_e00cde9d1533a070f4c44a97100c3bfe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_717632be83b7b9c99a8057d9be02f37e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a359e94c5ee035d2dbbf3b8e3ca119ba = $(`<div id="html_a359e94c5ee035d2dbbf3b8e3ca119ba" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN RENACER RIBEIRA</h4></div>`)[0];
+                popup_717632be83b7b9c99a8057d9be02f37e.setContent(html_a359e94c5ee035d2dbbf3b8e3ca119ba);
+            
+        
+
+        marker_24b76ce6d5d9d9f04b8b1dc2e2535519.bindPopup(popup_717632be83b7b9c99a8057d9be02f37e)
+        ;
+
+        
+    
+    
+            marker_24b76ce6d5d9d9f04b8b1dc2e2535519.bindTooltip(
+                `<div>
+                     ASOCIACIÓN RENACER RIBEIRA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24b76ce6d5d9d9f04b8b1dc2e2535519.setIcon(icon_e00cde9d1533a070f4c44a97100c3bfe);
+            
+    
+            var marker_495087456a3ca100063ec8202a8b2eab = L.marker(
+                [43.00992, -7.55602],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_681237588ecde736f225e2e9aa739578 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da4436daccec0a6e0454a5e4a6b0a6f4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e9f1900e10f69824672a6a0fe4e34ab3 = $(`<div id="html_e9f1900e10f69824672a6a0fe4e34ab3" style="width: 100.0%; height: 100.0%;"><h4>ALAR GALICIA LUGO</h4></div>`)[0];
+                popup_da4436daccec0a6e0454a5e4a6b0a6f4.setContent(html_e9f1900e10f69824672a6a0fe4e34ab3);
+            
+        
+
+        marker_495087456a3ca100063ec8202a8b2eab.bindPopup(popup_da4436daccec0a6e0454a5e4a6b0a6f4)
+        ;
+
+        
+    
+    
+            marker_495087456a3ca100063ec8202a8b2eab.bindTooltip(
+                `<div>
+                     ALAR GALICIA LUGO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_495087456a3ca100063ec8202a8b2eab.setIcon(icon_681237588ecde736f225e2e9aa739578);
+            
+    
+            var marker_dd73d5d047815493e9e23a85fbd5fa89 = L.marker(
+                [42.81773, -8.41709],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_bd0e59ab29f229e902e56a71a92d340c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -989,26 +816,26 @@
             );
         
     
-        var popup_f705691e123f467eb620ebe8cb5ba44f = L.popup({
-  "maxWidth": 250,
+        var popup_fa46a91a0bbe61d1393dd2dffc3f6a7c = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_68d5e397ff40c6578764e6b7553d9cec = $(`<div id="html_68d5e397ff40c6578764e6b7553d9cec" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Vigo</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_f705691e123f467eb620ebe8cb5ba44f.setContent(html_68d5e397ff40c6578764e6b7553d9cec);
+                var html_b0e6c7bfff0d0d46f0b226dbb99b1997 = $(`<div id="html_b0e6c7bfff0d0d46f0b226dbb99b1997" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE BOQUEIXÓN</h4></div>`)[0];
+                popup_fa46a91a0bbe61d1393dd2dffc3f6a7c.setContent(html_b0e6c7bfff0d0d46f0b226dbb99b1997);
             
         
 
-        marker_d5a1973e9e09b343a2fe6e70be8df13f.bindPopup(popup_f705691e123f467eb620ebe8cb5ba44f)
+        marker_dd73d5d047815493e9e23a85fbd5fa89.bindPopup(popup_fa46a91a0bbe61d1393dd2dffc3f6a7c)
         ;
 
         
     
     
-            marker_d5a1973e9e09b343a2fe6e70be8df13f.bindTooltip(
+            marker_dd73d5d047815493e9e23a85fbd5fa89.bindTooltip(
                 `<div>
-                     Concello de Vigo
+                     CONCELLO DE BOQUEIXÓN
                  </div>`,
                 {
   "sticky": true,
@@ -1016,17 +843,17 @@
             );
         
     
-                marker_d5a1973e9e09b343a2fe6e70be8df13f.setIcon(icon_b4db043f60bc49d8e1418330c0363392);
+                marker_dd73d5d047815493e9e23a85fbd5fa89.setIcon(icon_bd0e59ab29f229e902e56a71a92d340c);
             
     
-            var marker_9def717b979d110818d863b1f121519b = L.marker(
-                [43.298, -7.682],
+            var marker_bdafa83742837c59c860c3e8f4b8a45f = L.marker(
+                [43.28052, -8.21476],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_d476b434bfc68b2f7fcae24a8d45875c = L.AwesomeMarkers.icon(
+            var icon_d7d26c3c0976cd9297eef1d289ac7cd7 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1037,26 +864,26 @@
             );
         
     
-        var popup_357fc8e3c76bdac6c7352d44ef69b958 = L.popup({
-  "maxWidth": 250,
+        var popup_37d6ee5fa8de35604b02ee4ceeac2537 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_5c4e19c25a1f1dc500343ec30a1fe8a4 = $(`<div id="html_5c4e19c25a1f1dc500343ec30a1fe8a4" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Vilalba</h4> <p style='font-size:13px; line-height:1.4;'>Administración local colaboradora</p></div></div>`)[0];
-                popup_357fc8e3c76bdac6c7352d44ef69b958.setContent(html_5c4e19c25a1f1dc500343ec30a1fe8a4);
+                var html_a0986504ac8efe084c50a3bf4890f7b3 = $(`<div id="html_a0986504ac8efe084c50a3bf4890f7b3" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE BETANZOS</h4></div>`)[0];
+                popup_37d6ee5fa8de35604b02ee4ceeac2537.setContent(html_a0986504ac8efe084c50a3bf4890f7b3);
             
         
 
-        marker_9def717b979d110818d863b1f121519b.bindPopup(popup_357fc8e3c76bdac6c7352d44ef69b958)
+        marker_bdafa83742837c59c860c3e8f4b8a45f.bindPopup(popup_37d6ee5fa8de35604b02ee4ceeac2537)
         ;
 
         
     
     
-            marker_9def717b979d110818d863b1f121519b.bindTooltip(
+            marker_bdafa83742837c59c860c3e8f4b8a45f.bindTooltip(
                 `<div>
-                     Concello de Vilalba
+                     CONCELLO DE BETANZOS
                  </div>`,
                 {
   "sticky": true,
@@ -1064,19 +891,19 @@
             );
         
     
-                marker_9def717b979d110818d863b1f121519b.setIcon(icon_d476b434bfc68b2f7fcae24a8d45875c);
+                marker_bdafa83742837c59c860c3e8f4b8a45f.setIcon(icon_d7d26c3c0976cd9297eef1d289ac7cd7);
             
     
-            var marker_6aae8698a2220f17f5d3708eab933fdd = L.marker(
-                [42.521, -7.514],
+            var marker_bc3aac3d173ec56869866b39586b3c0e = L.marker(
+                [43.36251, -8.41194],
                 {
 }
-            ).addTo(marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80);
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
         
     
-            var icon_067e20b5aac201dcdcde84b12c696e57 = L.AwesomeMarkers.icon(
+            var icon_1b5fbcc1a9f26d809b2e0050a25aa2ee = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "red",
+  "markerColor": "green",
   "iconColor": "white",
   "icon": "info-sign",
   "prefix": "glyphicon",
@@ -1085,26 +912,26 @@
             );
         
     
-        var popup_f100631dc61f688b2f090799c74d38da = L.popup({
-  "maxWidth": 250,
+        var popup_2f3a1aca2bae6ee64047500459dfdc44 = L.popup({
+  "maxWidth": 300,
 });
 
         
             
-                var html_eca2e2bf77dd1a3d45133057f3a590a2 = $(`<div id="html_eca2e2bf77dd1a3d45133057f3a590a2" style="width: 100.0%; height: 100.0%;"> <div style="width:220px">     <h4 style="margin-bottom:6px; color:#2c3e50;">Concello de Monforte de Lemos (UAD)</h4> <p style='font-size:13px; line-height:1.4;'>Unidad de atención a drogodependencias</p></div></div>`)[0];
-                popup_f100631dc61f688b2f090799c74d38da.setContent(html_eca2e2bf77dd1a3d45133057f3a590a2);
+                var html_168d4b1b7fc5c559342728e281d76c14 = $(`<div id="html_168d4b1b7fc5c559342728e281d76c14" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACION AGALURE A CORUÑA</h4></div>`)[0];
+                popup_2f3a1aca2bae6ee64047500459dfdc44.setContent(html_168d4b1b7fc5c559342728e281d76c14);
             
         
 
-        marker_6aae8698a2220f17f5d3708eab933fdd.bindPopup(popup_f100631dc61f688b2f090799c74d38da)
+        marker_bc3aac3d173ec56869866b39586b3c0e.bindPopup(popup_2f3a1aca2bae6ee64047500459dfdc44)
         ;
 
         
     
     
-            marker_6aae8698a2220f17f5d3708eab933fdd.bindTooltip(
+            marker_bc3aac3d173ec56869866b39586b3c0e.bindTooltip(
                 `<div>
-                     Concello de Monforte de Lemos (UAD)
+                     ASOCIACION AGALURE A CORUÑA
                  </div>`,
                 {
   "sticky": true,
@@ -1112,10 +939,461 @@
             );
         
     
-                marker_6aae8698a2220f17f5d3708eab933fdd.setIcon(icon_067e20b5aac201dcdcde84b12c696e57);
+                marker_bc3aac3d173ec56869866b39586b3c0e.setIcon(icon_1b5fbcc1a9f26d809b2e0050a25aa2ee);
             
     
-            marker_cluster_7705abeee4ddfdf18eed0f7071bb7d80.addTo(map_f7bdaf00af02e44ad6d65b920b0d3b45);
+            var marker_3527310f55d4e446015e09c58b84110a = L.marker(
+                [42.23398, -8.72292],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_c5c69c55b609c0c9ec4f236d76f4acde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd211d33b72acd0887044766d8c95cb2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6e899a4c783c3562ffb4edefe9e50b4 = $(`<div id="html_c6e899a4c783c3562ffb4edefe9e50b4" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN ÉRGUETE VIGO</h4></div>`)[0];
+                popup_fd211d33b72acd0887044766d8c95cb2.setContent(html_c6e899a4c783c3562ffb4edefe9e50b4);
+            
+        
+
+        marker_3527310f55d4e446015e09c58b84110a.bindPopup(popup_fd211d33b72acd0887044766d8c95cb2)
+        ;
+
+        
+    
+    
+            marker_3527310f55d4e446015e09c58b84110a.bindTooltip(
+                `<div>
+                     ASOCIACIÓN ÉRGUETE VIGO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3527310f55d4e446015e09c58b84110a.setIcon(icon_c5c69c55b609c0c9ec4f236d76f4acde);
+            
+    
+            var marker_3c9f3128379d5cc56dfb21bad0513349 = L.marker(
+                [42.68945, -8.48827],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_fbb07d5b848be269a5c054003d0f536f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3b4e7b6377cfc7d98043c06e74636e6a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_623c4bd2a153f20aea8bf29e79b963c5 = $(`<div id="html_623c4bd2a153f20aea8bf29e79b963c5" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DA ESTRADA</h4></div>`)[0];
+                popup_3b4e7b6377cfc7d98043c06e74636e6a.setContent(html_623c4bd2a153f20aea8bf29e79b963c5);
+            
+        
+
+        marker_3c9f3128379d5cc56dfb21bad0513349.bindPopup(popup_3b4e7b6377cfc7d98043c06e74636e6a)
+        ;
+
+        
+    
+    
+            marker_3c9f3128379d5cc56dfb21bad0513349.bindTooltip(
+                `<div>
+                     CONCELLO DA ESTRADA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3c9f3128379d5cc56dfb21bad0513349.setIcon(icon_fbb07d5b848be269a5c054003d0f536f);
+            
+    
+            var marker_77a238fa8c503ccad1a97cb6b39422a7 = L.marker(
+                [42.43156, -8.64461],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_1898aac7a4da4a6fff80780df83ef585 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_509fc5c282f5d929ec773a1e64fbed74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf3f9135a8b7cd2aa2e7b6b5437969b2 = $(`<div id="html_cf3f9135a8b7cd2aa2e7b6b5437969b2" style="width: 100.0%; height: 100.0%;"><h4>XENEME INTERVENCIÓN SOCIAL PONTEVEDRA</h4></div>`)[0];
+                popup_509fc5c282f5d929ec773a1e64fbed74.setContent(html_cf3f9135a8b7cd2aa2e7b6b5437969b2);
+            
+        
+
+        marker_77a238fa8c503ccad1a97cb6b39422a7.bindPopup(popup_509fc5c282f5d929ec773a1e64fbed74)
+        ;
+
+        
+    
+    
+            marker_77a238fa8c503ccad1a97cb6b39422a7.bindTooltip(
+                `<div>
+                     XENEME INTERVENCIÓN SOCIAL PONTEVEDRA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_77a238fa8c503ccad1a97cb6b39422a7.setIcon(icon_1898aac7a4da4a6fff80780df83ef585);
+            
+    
+            var marker_42f05ff8c3f52066c864aa5e7b471eae = L.marker(
+                [42.63226, -8.56334],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_adc73af1b14611a7b32b4161939235b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2e9a12af4a34028aef2389919c3a3ea7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_28bd47a5e909c5fcbb372547d66f81c0 = $(`<div id="html_28bd47a5e909c5fcbb372547d66f81c0" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE CUNTIS</h4></div>`)[0];
+                popup_2e9a12af4a34028aef2389919c3a3ea7.setContent(html_28bd47a5e909c5fcbb372547d66f81c0);
+            
+        
+
+        marker_42f05ff8c3f52066c864aa5e7b471eae.bindPopup(popup_2e9a12af4a34028aef2389919c3a3ea7)
+        ;
+
+        
+    
+    
+            marker_42f05ff8c3f52066c864aa5e7b471eae.bindTooltip(
+                `<div>
+                     CONCELLO DE CUNTIS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_42f05ff8c3f52066c864aa5e7b471eae.setIcon(icon_adc73af1b14611a7b32b4161939235b5);
+            
+    
+            var marker_68ede7f888125d80acc6d197dc56cf9f = L.marker(
+                [42.26478, -8.78237],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_43a011be85d8cb519281054426d6df9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_abbbca51430f5117b4dc9430a08d6f31 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0bc7397a4c0985d36f657306f70fca45 = $(`<div id="html_0bc7397a4c0985d36f657306f70fca45" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE CANGAS</h4></div>`)[0];
+                popup_abbbca51430f5117b4dc9430a08d6f31.setContent(html_0bc7397a4c0985d36f657306f70fca45);
+            
+        
+
+        marker_68ede7f888125d80acc6d197dc56cf9f.bindPopup(popup_abbbca51430f5117b4dc9430a08d6f31)
+        ;
+
+        
+    
+    
+            marker_68ede7f888125d80acc6d197dc56cf9f.bindTooltip(
+                `<div>
+                     CONCELLO DE CANGAS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68ede7f888125d80acc6d197dc56cf9f.setIcon(icon_43a011be85d8cb519281054426d6df9e);
+            
+    
+            var marker_904ae12743d64b4dff340b8ca9867cb0 = L.marker(
+                [42.59635, -8.76411],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_d0bb18c6863ba4d119418191163228db = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11307d147cb9a9c864def611e7b30ac1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_790232fa1d1ba6fe8e1d701998c17ace = $(`<div id="html_790232fa1d1ba6fe8e1d701998c17ace" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE VILAGARCÍA DE AROUSA</h4></div>`)[0];
+                popup_11307d147cb9a9c864def611e7b30ac1.setContent(html_790232fa1d1ba6fe8e1d701998c17ace);
+            
+        
+
+        marker_904ae12743d64b4dff340b8ca9867cb0.bindPopup(popup_11307d147cb9a9c864def611e7b30ac1)
+        ;
+
+        
+    
+    
+            marker_904ae12743d64b4dff340b8ca9867cb0.bindTooltip(
+                `<div>
+                     CONCELLO DE VILAGARCÍA DE AROUSA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_904ae12743d64b4dff340b8ca9867cb0.setIcon(icon_d0bb18c6863ba4d119418191163228db);
+            
+    
+            var marker_0c704eefc94e7c3e4121097c0d7368a9 = L.marker(
+                [42.87876, -8.54499],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_00cfb60a4e60a3c5046e0a588e359621 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aff553bf1e58d996260a03a642a995dc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9c20693d1185be6657ecbcee0de9e5d0 = $(`<div id="html_9c20693d1185be6657ecbcee0de9e5d0" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN EMILIA GÓMEZ ADAFAD</h4></div>`)[0];
+                popup_aff553bf1e58d996260a03a642a995dc.setContent(html_9c20693d1185be6657ecbcee0de9e5d0);
+            
+        
+
+        marker_0c704eefc94e7c3e4121097c0d7368a9.bindPopup(popup_aff553bf1e58d996260a03a642a995dc)
+        ;
+
+        
+    
+    
+            marker_0c704eefc94e7c3e4121097c0d7368a9.bindTooltip(
+                `<div>
+                     ASOCIACIÓN EMILIA GÓMEZ ADAFAD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c704eefc94e7c3e4121097c0d7368a9.setIcon(icon_00cfb60a4e60a3c5046e0a588e359621);
+            
+    
+            var marker_ed719ed5603922a121ccccb99ad49a0d = L.marker(
+                [43.65772, -7.59328],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_e2e25ba65fe87911ddad5ef09ce076d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1f3bb9d33cb1e9c371776ebc286d42b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7f2938208e01e23b0389dffda01a93e9 = $(`<div id="html_7f2938208e01e23b0389dffda01a93e9" style="width: 100.0%; height: 100.0%;"><h4>ASOCIACIÓN VIEIRO</h4></div>`)[0];
+                popup_e1f3bb9d33cb1e9c371776ebc286d42b.setContent(html_7f2938208e01e23b0389dffda01a93e9);
+            
+        
+
+        marker_ed719ed5603922a121ccccb99ad49a0d.bindPopup(popup_e1f3bb9d33cb1e9c371776ebc286d42b)
+        ;
+
+        
+    
+    
+            marker_ed719ed5603922a121ccccb99ad49a0d.bindTooltip(
+                `<div>
+                     ASOCIACIÓN VIEIRO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed719ed5603922a121ccccb99ad49a0d.setIcon(icon_e2e25ba65fe87911ddad5ef09ce076d8);
+            
+    
+            var marker_9a40d06e7c4cacb6f19644ddadfd56fb = L.marker(
+                [42.66127, -8.11062],
+                {
+}
+            ).addTo(marker_cluster_ce50edd4df96fc74805a6032fee887e4);
+        
+    
+            var icon_fffd83207919cc5bfc7bb568b919d9ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dbfe9d817100b895d353e8e01b3efa82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b116e4d554386bba7380d9fb79a6e18e = $(`<div id="html_b116e4d554386bba7380d9fb79a6e18e" style="width: 100.0%; height: 100.0%;"><h4>CONCELLO DE LALÍN</h4></div>`)[0];
+                popup_dbfe9d817100b895d353e8e01b3efa82.setContent(html_b116e4d554386bba7380d9fb79a6e18e);
+            
+        
+
+        marker_9a40d06e7c4cacb6f19644ddadfd56fb.bindPopup(popup_dbfe9d817100b895d353e8e01b3efa82)
+        ;
+
+        
+    
+    
+            marker_9a40d06e7c4cacb6f19644ddadfd56fb.bindTooltip(
+                `<div>
+                     CONCELLO DE LALÍN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9a40d06e7c4cacb6f19644ddadfd56fb.setIcon(icon_fffd83207919cc5bfc7bb568b919d9ae);
+            
+    
+            marker_cluster_ce50edd4df96fc74805a6032fee887e4.addTo(map_72a38c492baab507e0afb090f65069df);
+        
+    
+            var layer_control_57f0cdc4552bbd3fe9b682e01b9998d4_layers = {
+                base_layers : {
+                },
+                overlays :  {
+                    "Entidades colaboradoras" : marker_cluster_ce50edd4df96fc74805a6032fee887e4,
+                },
+            };
+            let layer_control_57f0cdc4552bbd3fe9b682e01b9998d4 = L.control.layers(
+                layer_control_57f0cdc4552bbd3fe9b682e01b9998d4_layers.base_layers,
+                layer_control_57f0cdc4552bbd3fe9b682e01b9998d4_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_72a38c492baab507e0afb090f65069df);
+
         
 </script>
 </html>
